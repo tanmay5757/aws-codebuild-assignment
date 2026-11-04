@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - pip install -r requirements.txt
+
+  pre_build:
+    commands:
+      - echo "Starting unit tests"
+
+  build:
+    commands:
+      - pytest test_app.py -v
+
+  post_build:
+    commands:
+      - echo "Build completed"
+
+artifacts:
+  files:
+    - app.py
+    - test_app.py
+    - requirements.txt
+    - buildspec.yml
